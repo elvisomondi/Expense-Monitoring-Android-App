@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+    defaultConfig {
+        applicationId "luankevinferreira.expenses"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 15
+        versionName "1.1.6"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "Despesas"
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.0.2'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:design:26.0.2'
+    compile 'com.jjoe64:graphview:4.0.1'
+    compile 'com.google.android.gms:play-services-analytics:9.0.0'
+    testCompile "org.mockito:mockito-core:1.9.5"
+    testCompile 'org.powermock:powermock-api-mockito:1.6.1'
+    testCompile 'org.powermock:powermock-module-junit4-rule-agent:1.6.1'
+    testCompile 'org.powermock:powermock-module-junit4-rule:1.6.1'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.1'
+}
